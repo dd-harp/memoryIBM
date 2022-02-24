@@ -3,10 +3,16 @@ Type: Package
 Title: What the Package Does in One 'Title Case' Line
 Version: 1.0
 Date: 2022-02-24
-Author: Your Name
-Maintainer: Your Name <your@email.com>
+Authors@R: c(
+  person(
+    given = "Sean L.",
+    family = "Wu",
+    role = c('aut', 'cre'),
+    comment = c(ORCID = "0000-0002-5781-9493"),
+    email = 'slwood89@gmail.com'
+  ))
 Description: One paragraph description of what the package does as one or more full sentences.
-License: GPL (>= 2)
+License: MIT + file LICENSE
 NeedsCompilation: yes
 SystemRequirements: C++14
 RoxygenNote: 7.1.2
@@ -17,3 +23,6 @@ Imports:
   R6,
   Rcpp,
   individual
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
