@@ -1,8 +1,8 @@
-test_that("can create a ragged double variable", {
+test_that("ragged double variable functions as expected", {
   library(individual)
 
   size <- 10
-  vals <- replicate(n = size, expr = rexp(n = rpois(n = 1,lambda = 10)))
+  vals <- replicate(n = size, expr = rexp(n = rpois(n = 1,lambda = 10)), simplify = FALSE)
   vals_len <- vapply(X = vals, FUN = length, FUN.VALUE = integer(1), USE.NAMES = FALSE)
 
   var <- DoubleRaggedVariable$new(vals)
@@ -39,4 +39,37 @@ test_that("can create a ragged double variable", {
   new_vals <- vals
   new_vals[idx] <- sub_update
   expect_equal(var$get_values(), new_vals)
+})
+
+
+test_that("ragged double variable errors as expected", {
+  library(individual)
+
+  size <- 10
+  vals <- replicate(n = size, expr = 1:10, simplify = FALSE)
+
+  var <- DoubleRaggedVariable$new(vals)
+
+  expect_error(var$get_values(index = c(-1, 5)))
+  expect_error(var$get_values(index = c(1, size + 100L)))
+
+  expect_error(var$get_values(index = Bitset$new(size = 100)$insert(1)))
+  expect_error(var$get_values(index = Bitset$new(size = 100)))
+
+  expect_error(var$get_length(index = c(-1, 5)))
+  expect_error(var$get_length(index = c(1, size + 100L)))
+
+  expect_error(var$get_length(index = Bitset$new(size = 100)$insert(1)))
+  expect_error(var$get_length(index = Bitset$new(size = 100)))
+
+  expect_error(var$queue_update(values = list(1:2, 3:5)))
+  expect_error(var$queue_update(values = list(NULL, 1:3), index = c(4, 5)))
+  expect_error(var$queue_update(values = list(numeric(0), 1:3), index = c(4, 5)))
+  expect_error(var$queue_update(values = list(NULL, 1:3), index = Bitset$new(size)$insert(c(4, 5))))
+  expect_error(var$queue_update(values = list(numeric(0), 1:3), index = Bitset$new(size)$insert(c(4, 5))))
+  expect_error(var$queue_update(values = list(5:6, 9:4), index = c(1, 20)))
+  expect_error(var$queue_update(values = list(1:2, 3:5), index = c(1, 4, 5)))
+  expect_error(var$queue_update(values = list(1:2, 3:5), index = c(-2, 5)))
+  expect_error(var$queue_update(values = list(1:2, 3:5), index = Bitset$new(size)$insert(c(1, 4, 5))))
+  expect_error(var$queue_update(values = list(1:2, 3:5), index = Bitset$new(100L)$insert(c(1, 4))))
 })
