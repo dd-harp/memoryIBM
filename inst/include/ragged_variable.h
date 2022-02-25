@@ -68,7 +68,7 @@ inline std::vector<std::vector<T, std::allocator<T>>> RaggedVariable<T>::get_val
   std::vector<std::vector<T, std::allocator<T>>> result(index.size());
   auto result_i = 0u;
   for (auto i : index) {
-    std::copy(values[i].begin(), values[i].end(), std::back_inserter(result[i]));
+    std::copy(values[i].begin(), values[i].end(), std::back_inserter(result[result_i]));
     ++result_i;
   }
   return result;
@@ -106,7 +106,7 @@ inline std::vector<size_t> RaggedVariable<T>::get_length(const individual_index_
   if (size != index.max_size()) {
     Rcpp::stop("incompatible size bitset used to get values from RaggedVariable");
   }
-  std::vector<size_t> lengths(size);
+  std::vector<size_t> lengths(index.size());
   auto result_i = 0u;
   for (auto i : index) {
     lengths[result_i] = values[i].size();
@@ -118,7 +118,7 @@ inline std::vector<size_t> RaggedVariable<T>::get_length(const individual_index_
 //' @title get all lengths of ragged array at index given by a vector
 template <typename T>
 inline std::vector<size_t> RaggedVariable<T>::get_length(const std::vector<size_t>& index) const {
-  std::vector<size_t> lengths(size);
+  std::vector<size_t> lengths(index.size());
   for (auto i = 0u; i < index.size(); ++i) {
     if (index[i] >= size) {
       std::stringstream message;

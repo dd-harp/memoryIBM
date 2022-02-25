@@ -85,7 +85,7 @@ DoubleRaggedVariable <- R6Class(
           )
         } else {
           # variable reset
-          stopifnot(length(values) == integer_variable_get_size(self$.variable))
+          stopifnot(length(values) == double_ragged_variable_get_size(self$.variable))
           double_ragged_variable_queue_update(
             self$.variable,
             values,
@@ -95,7 +95,7 @@ DoubleRaggedVariable <- R6Class(
       } else {
         if (inherits(index, 'Bitset')) {
           # subset update/fill: bitset
-          stopifnot(index$max_size == integer_variable_get_size(self$.variable))
+          stopifnot(index$max_size == double_ragged_variable_get_size(self$.variable))
           if (index$size() > 0) {
             double_ragged_variable_queue_update_bitset(
               self$.variable,

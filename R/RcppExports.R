@@ -49,7 +49,3 @@ double_ragged_variable_update <- function(variable) {
     invisible(.Call('_memoryIBM_double_ragged_variable_update', PACKAGE = 'memoryIBM', variable))
 }
 
-rcpp_hello_world <- function() {
-    .Call('_memoryIBM_rcpp_hello_world', PACKAGE = 'memoryIBM')
-}
-

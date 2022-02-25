@@ -148,16 +148,6 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _memoryIBM_rcpp_hello_world() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_memoryIBM_create_double_ragged_variable", (DL_FUNC) &_memoryIBM_create_double_ragged_variable, 1},
@@ -172,7 +162,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_memoryIBM_double_ragged_variable_queue_update", (DL_FUNC) &_memoryIBM_double_ragged_variable_queue_update, 3},
     {"_memoryIBM_double_ragged_variable_queue_update_bitset", (DL_FUNC) &_memoryIBM_double_ragged_variable_queue_update_bitset, 3},
     {"_memoryIBM_double_ragged_variable_update", (DL_FUNC) &_memoryIBM_double_ragged_variable_update, 1},
-    {"_memoryIBM_rcpp_hello_world", (DL_FUNC) &_memoryIBM_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };
 
