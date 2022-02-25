@@ -148,6 +148,143 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// create_integer_ragged_variable
+Rcpp::XPtr<int_ragged> create_integer_ragged_variable(const std::vector<std::vector<int>>& values);
+RcppExport SEXP _memoryIBM_create_integer_ragged_variable(SEXP valuesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<std::vector<int>>& >::type values(valuesSEXP);
+    rcpp_result_gen = Rcpp::wrap(create_integer_ragged_variable(values));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_get_size
+size_t integer_ragged_variable_get_size(Rcpp::XPtr<int_ragged> variable);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_get_size(SEXP variableSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    rcpp_result_gen = Rcpp::wrap(integer_ragged_variable_get_size(variable));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_get_values
+std::vector<std::vector<int>> integer_ragged_variable_get_values(Rcpp::XPtr<int_ragged> variable);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_get_values(SEXP variableSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    rcpp_result_gen = Rcpp::wrap(integer_ragged_variable_get_values(variable));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_get_values_at_index
+std::vector<std::vector<int>> integer_ragged_variable_get_values_at_index(Rcpp::XPtr<int_ragged> variable, Rcpp::XPtr<individual_index_t> index);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_get_values_at_index(SEXP variableSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    Rcpp::traits::input_parameter< Rcpp::XPtr<individual_index_t> >::type index(indexSEXP);
+    rcpp_result_gen = Rcpp::wrap(integer_ragged_variable_get_values_at_index(variable, index));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_get_values_at_index_vector
+std::vector<std::vector<int>> integer_ragged_variable_get_values_at_index_vector(Rcpp::XPtr<int_ragged> variable, std::vector<size_t> index);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_get_values_at_index_vector(SEXP variableSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    Rcpp::traits::input_parameter< std::vector<size_t> >::type index(indexSEXP);
+    rcpp_result_gen = Rcpp::wrap(integer_ragged_variable_get_values_at_index_vector(variable, index));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_get_length
+std::vector<size_t> integer_ragged_variable_get_length(Rcpp::XPtr<int_ragged> variable);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_get_length(SEXP variableSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    rcpp_result_gen = Rcpp::wrap(integer_ragged_variable_get_length(variable));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_get_length_at_index
+std::vector<size_t> integer_ragged_variable_get_length_at_index(Rcpp::XPtr<int_ragged> variable, Rcpp::XPtr<individual_index_t> index);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_get_length_at_index(SEXP variableSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    Rcpp::traits::input_parameter< Rcpp::XPtr<individual_index_t> >::type index(indexSEXP);
+    rcpp_result_gen = Rcpp::wrap(integer_ragged_variable_get_length_at_index(variable, index));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_get_length_at_index_vector
+std::vector<size_t> integer_ragged_variable_get_length_at_index_vector(Rcpp::XPtr<int_ragged> variable, std::vector<size_t> index);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_get_length_at_index_vector(SEXP variableSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    Rcpp::traits::input_parameter< std::vector<size_t> >::type index(indexSEXP);
+    rcpp_result_gen = Rcpp::wrap(integer_ragged_variable_get_length_at_index_vector(variable, index));
+    return rcpp_result_gen;
+END_RCPP
+}
+// integer_ragged_variable_queue_fill
+void integer_ragged_variable_queue_fill(Rcpp::XPtr<int_ragged> variable, const std::vector<std::vector<int>> value);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_queue_fill(SEXP variableSEXP, SEXP valueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    Rcpp::traits::input_parameter< const std::vector<std::vector<int>> >::type value(valueSEXP);
+    integer_ragged_variable_queue_fill(variable, value);
+    return R_NilValue;
+END_RCPP
+}
+// integer_ragged_variable_queue_update
+void integer_ragged_variable_queue_update(Rcpp::XPtr<int_ragged> variable, const std::vector<std::vector<int>> value, std::vector<size_t> index);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_queue_update(SEXP variableSEXP, SEXP valueSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    Rcpp::traits::input_parameter< const std::vector<std::vector<int>> >::type value(valueSEXP);
+    Rcpp::traits::input_parameter< std::vector<size_t> >::type index(indexSEXP);
+    integer_ragged_variable_queue_update(variable, value, index);
+    return R_NilValue;
+END_RCPP
+}
+// integer_ragged_variable_queue_update_bitset
+void integer_ragged_variable_queue_update_bitset(Rcpp::XPtr<int_ragged> variable, const std::vector<std::vector<int>> value, Rcpp::XPtr<individual_index_t> index);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_queue_update_bitset(SEXP variableSEXP, SEXP valueSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    Rcpp::traits::input_parameter< const std::vector<std::vector<int>> >::type value(valueSEXP);
+    Rcpp::traits::input_parameter< Rcpp::XPtr<individual_index_t> >::type index(indexSEXP);
+    integer_ragged_variable_queue_update_bitset(variable, value, index);
+    return R_NilValue;
+END_RCPP
+}
+// integer_ragged_variable_update
+void integer_ragged_variable_update(Rcpp::XPtr<int_ragged> variable);
+RcppExport SEXP _memoryIBM_integer_ragged_variable_update(SEXP variableSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<int_ragged> >::type variable(variableSEXP);
+    integer_ragged_variable_update(variable);
+    return R_NilValue;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_memoryIBM_create_double_ragged_variable", (DL_FUNC) &_memoryIBM_create_double_ragged_variable, 1},
@@ -162,6 +299,18 @@ static const R_CallMethodDef CallEntries[] = {
     {"_memoryIBM_double_ragged_variable_queue_update", (DL_FUNC) &_memoryIBM_double_ragged_variable_queue_update, 3},
     {"_memoryIBM_double_ragged_variable_queue_update_bitset", (DL_FUNC) &_memoryIBM_double_ragged_variable_queue_update_bitset, 3},
     {"_memoryIBM_double_ragged_variable_update", (DL_FUNC) &_memoryIBM_double_ragged_variable_update, 1},
+    {"_memoryIBM_create_integer_ragged_variable", (DL_FUNC) &_memoryIBM_create_integer_ragged_variable, 1},
+    {"_memoryIBM_integer_ragged_variable_get_size", (DL_FUNC) &_memoryIBM_integer_ragged_variable_get_size, 1},
+    {"_memoryIBM_integer_ragged_variable_get_values", (DL_FUNC) &_memoryIBM_integer_ragged_variable_get_values, 1},
+    {"_memoryIBM_integer_ragged_variable_get_values_at_index", (DL_FUNC) &_memoryIBM_integer_ragged_variable_get_values_at_index, 2},
+    {"_memoryIBM_integer_ragged_variable_get_values_at_index_vector", (DL_FUNC) &_memoryIBM_integer_ragged_variable_get_values_at_index_vector, 2},
+    {"_memoryIBM_integer_ragged_variable_get_length", (DL_FUNC) &_memoryIBM_integer_ragged_variable_get_length, 1},
+    {"_memoryIBM_integer_ragged_variable_get_length_at_index", (DL_FUNC) &_memoryIBM_integer_ragged_variable_get_length_at_index, 2},
+    {"_memoryIBM_integer_ragged_variable_get_length_at_index_vector", (DL_FUNC) &_memoryIBM_integer_ragged_variable_get_length_at_index_vector, 2},
+    {"_memoryIBM_integer_ragged_variable_queue_fill", (DL_FUNC) &_memoryIBM_integer_ragged_variable_queue_fill, 2},
+    {"_memoryIBM_integer_ragged_variable_queue_update", (DL_FUNC) &_memoryIBM_integer_ragged_variable_queue_update, 3},
+    {"_memoryIBM_integer_ragged_variable_queue_update_bitset", (DL_FUNC) &_memoryIBM_integer_ragged_variable_queue_update_bitset, 3},
+    {"_memoryIBM_integer_ragged_variable_update", (DL_FUNC) &_memoryIBM_integer_ragged_variable_update, 1},
     {NULL, NULL, 0}
 };
 
