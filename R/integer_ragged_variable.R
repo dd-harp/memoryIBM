@@ -1,21 +1,21 @@
-#' @title DoubleRaggedVariable Class
+#' @title IntegerRaggedVariable Class
 #' @description This is a ragged variable class where the array for each individual
-#' stores doubles (numeric values).
+#' stores integers.
 #' @importFrom R6 R6Class
 #' @export
-DoubleRaggedVariable <- R6Class(
-  'DoubleRaggedVariable',
+IntegerRaggedVariable <- R6Class(
+  'IntegerRaggedVariable',
   public = list(
 
     .variable = NULL,
 
-    #' @description Create a new DoubleRaggedVariable
+    #' @description Create a new IntegerRaggedVariable
     #' @param initial_values a vector of the initial values for each individual
     initialize = function(initial_values) {
       stopifnot(!is.null(initial_values))
-      stopifnot(vapply(X = initial_values, FUN = class, FUN.VALUE = character(1), USE.NAMES = FALSE) %in% c('numeric', 'integer'))
+      stopifnot(vapply(X = initial_values, FUN = class, FUN.VALUE = character(1), USE.NAMES = FALSE) %in% c("numeric", "integer"))
       stopifnot(length(initial_values) > 0L)
-      self$.variable <- create_double_ragged_variable(initial_values)
+      self$.variable <- create_integer_ragged_variable(initial_values)
     },
 
     #' @description Get the variable values.
@@ -24,14 +24,14 @@ DoubleRaggedVariable <- R6Class(
     #' or integer vector, return values of those individuals.
     get_values = function(index = NULL) {
       if (is.null(index)) {
-        return(double_ragged_variable_get_values(self$.variable))
+        return(integer_ragged_variable_get_values(self$.variable))
       } else{
         if (inherits(index, 'Bitset')){
-          return(double_ragged_variable_get_values_at_index(self$.variable, index$.bitset))
+          return(integer_ragged_variable_get_values_at_index(self$.variable, index$.bitset))
         } else {
           stopifnot(index > 0)
           stopifnot(is.finite(index))
-          return(double_ragged_variable_get_values_at_index_vector(self$.variable, index))
+          return(integer_ragged_variable_get_values_at_index_vector(self$.variable, index))
         }
       }
 
@@ -43,14 +43,14 @@ DoubleRaggedVariable <- R6Class(
     #' or integer vector, return lengths of arrays for those individuals.
     get_length = function(index = NULL) {
       if (is.null(index)) {
-        return(double_ragged_variable_get_length(self$.variable))
+        return(integer_ragged_variable_get_length(self$.variable))
       } else{
         if (inherits(index, 'Bitset')){
-          return(double_ragged_variable_get_length_at_index(self$.variable, index$.bitset))
+          return(integer_ragged_variable_get_length_at_index(self$.variable, index$.bitset))
         } else {
           stopifnot(index > 0)
           stopifnot(is.finite(index))
-          return(double_ragged_variable_get_length_at_index_vector(self$.variable, index))
+          return(integer_ragged_variable_get_length_at_index_vector(self$.variable, index))
         }
       }
     },
@@ -76,18 +76,17 @@ DoubleRaggedVariable <- R6Class(
     #' fill options. If using indices, this may be either a vector of integers or
     #' an [individual::Bitset].
     queue_update = function(values, index = NULL) {
-      stopifnot(vapply(X = values, FUN = class, FUN.VALUE = character(1), USE.NAMES = FALSE) %in% c('numeric', 'integer'))
       if(is.null(index)){
         if(length(values) == 1){
           # variable fill
-          double_ragged_variable_queue_fill(
+          integer_ragged_variable_queue_fill(
             self$.variable,
             values
           )
         } else {
           # variable reset
-          stopifnot(length(values) == double_ragged_variable_get_size(self$.variable))
-          double_ragged_variable_queue_update(
+          stopifnot(length(values) == integer_ragged_variable_get_size(self$.variable))
+          integer_ragged_variable_queue_update(
             self$.variable,
             values,
             integer(0)
@@ -96,9 +95,9 @@ DoubleRaggedVariable <- R6Class(
       } else {
         if (inherits(index, 'Bitset')) {
           # subset update/fill: bitset
-          stopifnot(index$max_size == double_ragged_variable_get_size(self$.variable))
+          stopifnot(index$max_size == integer_ragged_variable_get_size(self$.variable))
           if (index$size() > 0) {
-            double_ragged_variable_queue_update_bitset(
+            integer_ragged_variable_queue_update_bitset(
               self$.variable,
               values,
               index$.bitset
@@ -109,7 +108,7 @@ DoubleRaggedVariable <- R6Class(
             # subset update/fill: vector
             stopifnot(is.finite(index))
             stopifnot(index > 0)
-            double_ragged_variable_queue_update(
+            integer_ragged_variable_queue_update(
               self$.variable,
               values,
               index
@@ -120,6 +119,6 @@ DoubleRaggedVariable <- R6Class(
       }
     },
 
-    .update = function() double_ragged_variable_update(self$.variable)
+    .update = function() integer_ragged_variable_update(self$.variable)
   )
 )

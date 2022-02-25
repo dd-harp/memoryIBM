@@ -49,3 +49,51 @@ double_ragged_variable_update <- function(variable) {
     invisible(.Call('_memoryIBM_double_ragged_variable_update', PACKAGE = 'memoryIBM', variable))
 }
 
+create_integer_ragged_variable <- function(values) {
+    .Call('_memoryIBM_create_integer_ragged_variable', PACKAGE = 'memoryIBM', values)
+}
+
+integer_ragged_variable_get_size <- function(variable) {
+    .Call('_memoryIBM_integer_ragged_variable_get_size', PACKAGE = 'memoryIBM', variable)
+}
+
+integer_ragged_variable_get_values <- function(variable) {
+    .Call('_memoryIBM_integer_ragged_variable_get_values', PACKAGE = 'memoryIBM', variable)
+}
+
+integer_ragged_variable_get_values_at_index <- function(variable, index) {
+    .Call('_memoryIBM_integer_ragged_variable_get_values_at_index', PACKAGE = 'memoryIBM', variable, index)
+}
+
+integer_ragged_variable_get_values_at_index_vector <- function(variable, index) {
+    .Call('_memoryIBM_integer_ragged_variable_get_values_at_index_vector', PACKAGE = 'memoryIBM', variable, index)
+}
+
+integer_ragged_variable_get_length <- function(variable) {
+    .Call('_memoryIBM_integer_ragged_variable_get_length', PACKAGE = 'memoryIBM', variable)
+}
+
+integer_ragged_variable_get_length_at_index <- function(variable, index) {
+    .Call('_memoryIBM_integer_ragged_variable_get_length_at_index', PACKAGE = 'memoryIBM', variable, index)
+}
+
+integer_ragged_variable_get_length_at_index_vector <- function(variable, index) {
+    .Call('_memoryIBM_integer_ragged_variable_get_length_at_index_vector', PACKAGE = 'memoryIBM', variable, index)
+}
+
+integer_ragged_variable_queue_fill <- function(variable, value) {
+    invisible(.Call('_memoryIBM_integer_ragged_variable_queue_fill', PACKAGE = 'memoryIBM', variable, value))
+}
+
+integer_ragged_variable_queue_update <- function(variable, value, index) {
+    invisible(.Call('_memoryIBM_integer_ragged_variable_queue_update', PACKAGE = 'memoryIBM', variable, value, index))
+}
+
+integer_ragged_variable_queue_update_bitset <- function(variable, value, index) {
+    invisible(.Call('_memoryIBM_integer_ragged_variable_queue_update_bitset', PACKAGE = 'memoryIBM', variable, value, index))
+}
+
+integer_ragged_variable_update <- function(variable) {
+    invisible(.Call('_memoryIBM_integer_ragged_variable_update', PACKAGE = 'memoryIBM', variable))
+}
+

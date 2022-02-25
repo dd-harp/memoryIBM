@@ -5,4 +5,6 @@
 
 using dbl_ragged = RaggedVariable<double>;
 
+using int_ragged = RaggedVariable<int>;
+
 #endif
