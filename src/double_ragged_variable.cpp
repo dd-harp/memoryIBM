@@ -5,14 +5,14 @@
  *      Author: Sean L. Wu (slwood89@gmail.com)
  */
 
-#include "../inst/include/ragged_variable.h"
+#include "../inst/include/common_types.h"
 #include "../inst/include/utils.h"
 
 // [[Rcpp::export]]
-Rcpp::XPtr<RaggedVariable<double>> create_double_ragged_variable(
+Rcpp::XPtr<dbl_ragged> create_double_ragged_variable(
     const std::vector<std::vector<double>>& values
 ) {
-  return Rcpp::XPtr<RaggedVariable<double>>(
+  return Rcpp::XPtr<dbl_ragged>(
     new RaggedVariable<double>(values),
     true
   );
@@ -20,21 +20,21 @@ Rcpp::XPtr<RaggedVariable<double>> create_double_ragged_variable(
 
 // [[Rcpp::export]]
 size_t double_ragged_variable_get_size(
-  Rcpp::XPtr<RaggedVariable<double>> variable
+  Rcpp::XPtr<dbl_ragged> variable
 ) {
   return variable->size;
 }
 
 // [[Rcpp::export]]
 std::vector<std::vector<double>> double_ragged_variable_get_values(
-    Rcpp::XPtr<RaggedVariable<double>> variable
+    Rcpp::XPtr<dbl_ragged> variable
 ) {
   return variable->get_values();
 }
 
 // [[Rcpp::export]]
 std::vector<std::vector<double>> double_ragged_variable_get_values_at_index(
-    Rcpp::XPtr<RaggedVariable<double>> variable,
+    Rcpp::XPtr<dbl_ragged> variable,
     Rcpp::XPtr<individual_index_t> index
 ) {
   return variable->get_values(*index);
@@ -42,7 +42,7 @@ std::vector<std::vector<double>> double_ragged_variable_get_values_at_index(
 
 // [[Rcpp::export]]
 std::vector<std::vector<double>> double_ragged_variable_get_values_at_index_vector(
-    Rcpp::XPtr<RaggedVariable<double>> variable,
+    Rcpp::XPtr<dbl_ragged> variable,
     std::vector<size_t> index
 ) {
   decrement(index);
@@ -51,14 +51,14 @@ std::vector<std::vector<double>> double_ragged_variable_get_values_at_index_vect
 
 // [[Rcpp::export]]
 std::vector<size_t> double_ragged_variable_get_length(
-    Rcpp::XPtr<RaggedVariable<double>> variable
+    Rcpp::XPtr<dbl_ragged> variable
 ) {
   return variable->get_length();
 }
 
 // [[Rcpp::export]]
 std::vector<size_t> double_ragged_variable_get_length_at_index(
-    Rcpp::XPtr<RaggedVariable<double>> variable,
+    Rcpp::XPtr<dbl_ragged> variable,
     Rcpp::XPtr<individual_index_t> index
 ) {
   return variable->get_length(*index);
@@ -66,7 +66,7 @@ std::vector<size_t> double_ragged_variable_get_length_at_index(
 
 // [[Rcpp::export]]
 std::vector<size_t> double_ragged_variable_get_length_at_index_vector(
-    Rcpp::XPtr<RaggedVariable<double>> variable,
+    Rcpp::XPtr<dbl_ragged> variable,
     std::vector<size_t> index
 ) {
   decrement(index);
@@ -75,7 +75,7 @@ std::vector<size_t> double_ragged_variable_get_length_at_index_vector(
 
 // [[Rcpp::export]]
 void double_ragged_variable_queue_fill(
-    Rcpp::XPtr<RaggedVariable<double>> variable,
+    Rcpp::XPtr<dbl_ragged> variable,
     const std::vector<std::vector<double>> value
 ) {
   variable->queue_update(value, std::vector<size_t>());
@@ -83,7 +83,7 @@ void double_ragged_variable_queue_fill(
 
 // [[Rcpp::export]]
 void double_ragged_variable_queue_update(
-    Rcpp::XPtr<RaggedVariable<double>> variable,
+    Rcpp::XPtr<dbl_ragged> variable,
     const std::vector<std::vector<double>> value,
     std::vector<size_t> index
 ) {
@@ -93,7 +93,7 @@ void double_ragged_variable_queue_update(
 
 // [[Rcpp::export]]
 void double_ragged_variable_queue_update_bitset(
-    Rcpp::XPtr<RaggedVariable<double>> variable,
+    Rcpp::XPtr<dbl_ragged> variable,
     const std::vector<std::vector<double>> value,
     Rcpp::XPtr<individual_index_t> index
 ) {
@@ -103,7 +103,7 @@ void double_ragged_variable_queue_update_bitset(
 
 // [[Rcpp::export]]
 void double_ragged_variable_update(
-    Rcpp::XPtr<RaggedVariable<double>> variable
+    Rcpp::XPtr<dbl_ragged> variable
 ) {
   variable->update();
 }

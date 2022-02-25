@@ -144,14 +144,15 @@ inline void RaggedVariable<T>::queue_update(
     Rcpp::stop("Mismatch between value and index length");
   }
 
-  for (auto i : index) {
-    if (i >= size) {
+  for (auto i = 0u; i < index.size(); ++i) {
+    if (index[i] >= size) {
       Rcpp::stop("Index out of bounds");
     }
     if (values[i].empty()) {
       Rcpp::stop("Please provide non-empty updates");
     }
   }
+
   updates.push({ values, index });
 }
 

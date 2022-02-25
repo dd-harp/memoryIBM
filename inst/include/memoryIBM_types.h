@@ -2,6 +2,6 @@
 #define MEMORYIBM_TYPES
 
 #include <individual.h>
-#include "ragged_variable.h"
+#include "common_types.h"
 
 #endif
