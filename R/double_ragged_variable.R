@@ -13,7 +13,7 @@ DoubleRaggedVariable <- R6Class(
     #' @param initial_values a vector of the initial values for each individual
     initialize = function(initial_values) {
       stopifnot(!is.null(initial_values))
-      stopifnot(vapply(X = initial_values, FUN = class, FUN.VALUE = character(1), USE.NAMES = FALSE) == "numeric")
+      stopifnot(vapply(X = initial_values, FUN = class, FUN.VALUE = character(1), USE.NAMES = FALSE) %in% c("numeric", "integer"))
       stopifnot(length(initial_values) > 0L)
       self$.variable <- create_double_ragged_variable(initial_values)
     },
