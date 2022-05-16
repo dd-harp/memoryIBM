@@ -25,8 +25,8 @@ DoubleRaggedVariable <- R6Class(
     get_values = function(index = NULL) {
       if (is.null(index)) {
         return(double_ragged_variable_get_values(self$.variable))
-      } else{
-        if (inherits(index, 'Bitset')){
+      } else {
+        if (inherits(index, 'Bitset')) {
           return(double_ragged_variable_get_values_at_index(self$.variable, index$.bitset))
         } else {
           stopifnot(index > 0)
